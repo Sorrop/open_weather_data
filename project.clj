@@ -11,7 +11,8 @@
                  [cheshire "5.8.1"]
                  [mount "0.1.14"]
                  [clj-postgresql "0.7.0"]
-                 [org.clojure/tools.namespace "0.3.0-alpha4"]]
+                 [org.clojure/tools.namespace "0.3.0-alpha4"]
+                 [clj-time "0.15.0"]]
   :main ^:skip-aot open-weather-data.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
