@@ -8,7 +8,10 @@
                  [org.clojure/java.jdbc "0.7.8"]
                  [clj-http "3.9.1"]
                  [org.clojure/core.async "0.4.490"]
-                 [cheshire "5.8.1"]]
+                 [cheshire "5.8.1"]
+                 [mount "0.1.14"]
+                 [clj-postgresql "0.7.0"]
+                 [org.clojure/tools.namespace "0.3.0-alpha4"]]
   :main ^:skip-aot open-weather-data.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
