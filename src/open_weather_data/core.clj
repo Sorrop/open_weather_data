@@ -5,6 +5,9 @@
             [open-weather-data.state.app-config :refer [app-config]]
             [open-weather-data.state.database :refer [database]]
             [open-weather-data.state.cache :refer [cache]]
+            [open-weather-data.state.persistence :refer [persistence-listener]]
+            [open-weather-data.validate :refer [conform]]
+            [open-weather-data.fetch :refer [fetch-current]]
             [mount.core :as mount]
             [clojure.tools.namespace.repl :as tn])
   (:gen-class))
@@ -23,34 +26,14 @@
 
 (go)
 
-#_(def places
-    [["Athens" "Greece" "GR"]
-     ["Paris" "France" "FR"]
-     ["London" "UK" "GB"]
-     ["Madrid" "Spain" "ES"]
-     ["Moscow" "Russia" "RU"]
-     ["Rome" "Italy" "IT"]])
+(def places
+  [["Athens" "Greece" "GR"]
+   ["Paris" "France" "FR"]
+   ["London" "UK" "GB"]
+   ["Madrid" "Spain" "ES"]
+   ["Moscow" "Russia" "RU"]
+   #_["Rome" "Italy" "IT"]])
 
-(defn find-place-id [[city-name country-name country-code]]
-  (some #(when (and (= (:city-name %) city-name)
-                    (or (= (:country-name %) country-name)
-                        (= (:country-code %) country-code)))
-           %)
-        (:city-matchings @cache)))
-
-
-(comment
-  (jdbc/query db-spec ["SELECT * FROM current_reports"])
-  (let [host (:host open-weather-api)
-        app-id (:api-key open-weather-api)
-        endpoint "/weather"
-        params {:id 264371
-                :units "metric"}
-        form (remote-call host endpoint
-                          app-id
-                          params
-                          println)]
-    form))
 
 (defn -main
   "I don't do a whole lot ... yet."
