@@ -7,7 +7,8 @@
             [open-weather-data.state.cache :refer [cache]]
             [open-weather-data.state.persistence :refer [persistence-listener]]
             [open-weather-data.validate :refer [conform]]
-            [open-weather-data.fetch :refer [fetch-current]]
+            [open-weather-data.fetch :refer [fetch-current
+                                             fetch-forecast]]
             [mount.core :as mount]
             [clojure.tools.namespace.repl :as tn])
   (:gen-class))
