@@ -75,7 +75,4 @@
                  app-id
                  params
                  (fn [data]
-                   (put! persistence-listener [:forecast
-                                               city
-                                               (filter-forecasts data)
-                                               cities-count])))))
+                   (clojure.pprint/pprint (filter-forecasts data))))))
