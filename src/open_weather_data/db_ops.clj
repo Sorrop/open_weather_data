@@ -58,3 +58,19 @@
   [action city data db]
   #_(insert-in-json-table! db city data)
   (insert-in-normal-table! db city data))
+
+(defn table<->csv [app-config table-name file-name direction]
+  (let [root-dir (get app-config :csv-files-dir)
+        sql (str "\\copy "
+                 table-name
+                 (if (= direction :from)
+                   " FROM "
+                   " TO ")
+                 (str \' root-dir file-name ".csv" \')
+                 " DELIMITER ',' CSV HEADER")]
+    (clojure.java.shell/sh "psql"
+                           "-d"
+                           (get-in app-config
+                                   [:database :dbname])
+                           "-c"
+                           sql)))
