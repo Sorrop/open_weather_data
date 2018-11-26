@@ -33,7 +33,7 @@ EXECUTE PROCEDURE trigger_updated_timestamp();
 
 
 
-/* another take on forecasts - has trade-offs*/
+/* another take on forecasts - has trade-offs
 
 CREATE TABLE forecasts (
   city_id INTEGER UNIQUE,
@@ -44,9 +44,10 @@ CREATE TABLE forecasts (
   created_at TIMESTAMP WITH TIME ZONE  NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW());
 
-/* use the same trigger function */
 
 CREATE TRIGGER updated_timestamp_forecasts
 BEFORE UPDATE ON forecasts
 FOR EACH ROW
 EXECUTE PROCEDURE trigger_updated_timestamp();
+
+*/
