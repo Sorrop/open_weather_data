@@ -16,4 +16,10 @@
                  [amazonica "0.3.134"]]
   :main ^:skip-aot open-weather-data.core
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:dev {:main user
+                   :source-paths ["src/" "dev/"]
+                   :dependencies [[org.clojure/tools.namespace "0.2.11"]
+                                  [mount "0.1.14"]
+                                  [org.clojure/tools.nrepl "0.2.13"]
+                                  [binaryage/devtools "0.9.10"]]}
+             :uberjar {:aot :all}})

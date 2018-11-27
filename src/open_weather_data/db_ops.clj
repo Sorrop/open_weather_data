@@ -1,5 +1,6 @@
 (ns open-weather-data.db-ops
   (:require [clojure.java.jdbc :as jdbc]
+            [clojure.java.shell :as shell]
             [cheshire.core :refer [generate-string]]
             [clj-time.core :as t]
             [clj-time.local :as l]
@@ -68,9 +69,9 @@
                    " TO ")
                  (str \' root-dir file-name ".csv" \')
                  " DELIMITER ',' CSV HEADER")]
-    (clojure.java.shell/sh "psql"
-                           "-d"
-                           (get-in app-config
-                                   [:database :dbname])
-                           "-c"
-                           sql)))
+    (shell/sh "psql"
+              "-d"
+              (get-in app-config
+                      [:database :dbname])
+              "-c"
+              sql)))
