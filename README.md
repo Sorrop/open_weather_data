@@ -26,6 +26,16 @@ It is needed to include on top level directory a `config.edn` file with the foll
               :bucket <bucket_name>}}
 ```
 
+## Development
+
+Development is done with Emacs + CIDER. 
+
+When you're on a clj buffer <kbd>M-x cider-jack-in-clj</kbd> or <kbd>M-x cider-jack-in</kbd>
+
+Hit `(go)` when prompted on the clojure repl to start the system.
+
+Hit `(reset)` when you have completed changes to reload changed files and restart the system.
+
 ## Usage
 
 FIXME: explanation
